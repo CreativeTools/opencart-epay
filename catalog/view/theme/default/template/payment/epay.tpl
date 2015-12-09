@@ -15,18 +15,8 @@
  
 <script type="text/javascript">
 	function newWindow() {
-      paymentwindow = new PaymentWindow({
-      <?php
-      foreach($params as $key => $value)
-      {
-        if($key != "hash")
-        {
-          echo "'" . $key . "': \"". $value . "\",";
-        }
-      }
-      ?>
-			'hash': "<?php echo $params["hash"]; ?>"
-      });
+		var params = <?php echo json_encode($params) ?>;
+		paymentwindow = new PaymentWindow(params);
 	}
 </script>
  
